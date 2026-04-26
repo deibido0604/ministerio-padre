@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { LanguageProvider } from './context/LanguageContext';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import Hero from './components/HeroCarousel';
 import History from './components/History';
 import Ministries from './components/Ministries';
 import Donations from './components/Donations';
