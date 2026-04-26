@@ -1,0 +1,163 @@
+{
+    "common": {
+        "loading": "Cargando...",
+        "error": "Error",
+        "success": "Éxito"
+    },
+    "header": {
+        "home": "Inicio",
+        "history": "Historia",
+        "trips": "Actividades",
+        "media": "Multimedia",
+        "projects": "Proyectos",
+        "ministries": "Ministerios",
+        "donations": "Donaciones",
+        "contact": "Contacto",
+        "language": "Idioma",
+        "callUs": "Llámanos",
+        "mainPhone": "Teléfono principal"
+    },
+    "hero": {
+        "title": "Iglesia Ministerio Vida Eterna",
+        "welcome": "Bienvenidos a la",
+        "description": "Somos una comunidad de fe comprometida con el crecimiento espiritual, el servicio a la comunidad y la proclamación del Evangelical. Nuestra iglesia es un lugar donde las vidas son transformadas por el amor de Dios.",
+        "visitUs": "Visítanos este Domingo",
+        "support": "Apoya la Obra",
+        "community": "Comunidad",
+        "communityDesc": "Vivimos en unidad y amor fraternal",
+        "growth": "Crecimiento",
+        "growthDesc": "Discipulado y formación bíblica",
+        "teaching": "Enseñanza",
+        "teachingDesc": "Palabra de Dios sólida y relevante"
+    },
+    "history": {
+        "title": "Nuestra Historia",
+        "subtitle": "Ministerio Vida Eterna en Honduras",
+        "paragraph1": "Dios dio la visión a los misioneros Víctor Solórzano y Doris Hernández al fundar el Ministerio Vida Eterna en Honduras.",
+        "paragraph2": "Tras una visita como voluntarios con su hijo Javier, vieron las necesidades hospitalarias y de pobreza extrema que se atravesaban en la región, y la bondad de Dios motivó a comenzar con niños trayendo brigadas médicas junto al mensaje transformador de Jesucristo.",
+        "paragraph3": "Con ese propósito llegaron los misioneros Fernando y Glenni, atendiendo el llamado para darle vida a la misión y preparando un equipo juvenil de misioneros que llevará el mensaje de salvación a la siguiente generación.",
+        "purpose": "Propósito",
+        "purposeText": "Nuestro propósito fundamental es capacitar iglesias, jóvenes, maestros y familias para que sean efectivos en el cumplimiento de la Gran Comisión.",
+        "mission": "Misión",
+        "missionText": "Predicar las buenas nuevas (el evangelio de Jesucristo). Alcanzar a los perdidos y presentarles el plan de salvación que es dado en el nombre de Jesucristo. Edificar la iglesia, fortaleciéndoles en el amor a Dios y el conocimiento bíblico.",
+        "vision": "Visión",
+        "visionText": "Teniendo incorporada la práctica de desarrollarnos por medio de una buena base bíblica, buscamos el desarrollo de miembros que ejerzan en su vida secular y espiritual la honestidad, integridad y santidad.",
+        "values": "Valores",
+        "valuesList": "Honestidad, Integridad y Santidad"
+    },
+    "trips": {
+        "title": "Actividades del Ministerio",
+        "subtitle": "Estas son las obras que actualmente realizamos como iglesia en la comunidad.",
+        "cards": {
+            "templo": {
+                "title": "Construcción del Templo",
+                "frequency": "Proyecto activo",
+                "description": "Avance de estructura, techado y mejoras del espacio para la congregación.",
+                "detail": "Trabajo continuo con apoyo de hermanos y voluntarios."
+            },
+            "culto": {
+                "title": "Cultos de la Iglesia",
+                "frequency": "Semanal",
+                "description": "Reuniones de adoración, enseñanza y oración como comunidad de fe.",
+                "detail": "Participación de niños, jóvenes y adultos en cada servicio."
+            },
+            "casas": {
+                "title": "Casas de Vida",
+                "frequency": "Miércoles",
+                "description": "Visitamos hogares de miembros para desarrollar temas bíblicos y abrir espacio a vecinos.",
+                "detail": "Evangelismo en hogares y fortalecimiento espiritual familiar."
+            }
+        }
+    },
+    "projects": {
+        "title": "Proyectos",
+        "subtitle": "Proyectos que transforman vidas en nuestra comunidad",
+        "cards": {
+            "medical": {
+                "title": "Brigadas Médicas",
+                "description": "Atención médica gratuita para comunidades necesitadas"
+            },
+            "education": {
+                "title": "Educación Bíblica",
+                "description": "Clases y talleres para el crecimiento espiritual"
+            },
+            "community": {
+                "title": "Trabajo Comunitario",
+                "description": "Proyectos de servicio social y ayuda mutua"
+            }
+        }
+    },
+    "ministries": {
+        "title": "Ministerios",
+        "subtitle": "Áreas de servicio dentro de nuestra iglesia",
+        "music": {
+            "title": "Ministerio de Música",
+            "description": "Alabanza y adoración"
+        },
+        "education": {
+            "title": "Enseñanza Bíblica",
+            "description": "Clases y talleres para el crecimiento espiritual"
+        },
+        "community": {
+            "title": "Servicio Social",
+            "description": "Ayuda a los necesitados"
+        },
+        "youth": {
+            "title": "Ministerio de Jóvenes",
+            "description": "Discipulado y actividades para jóvenes"
+        },
+        "missions": {
+            "title": "Misiones",
+            "description": "Proyectos de evangelismo"
+        },
+        "children": {
+            "title": "Ministerio Infantil",
+            "description": "Educación bíblica para los más pequeños"
+        }
+    },
+    "donations": {
+        "title": "Donaciones",
+        "subtitle": "Tu apoyo hace posible la obra de Dios",
+        "description": "Todas las donaciones son utilizadas para avanzar el reino de Dios y ayudar a quienes más lo necesitan.",
+        "bank": {
+            "title": "Transferencia Bancaria",
+            "account": "Cuenta pendiente",
+            "note": "Contactanos para más información"
+        },
+        "inKind": {
+            "title": "Donaciones en Especie",
+            "description": "Aceptamos donaciones de alimentos, ropa y materiales de construcción"
+        },
+        "volunteer": {
+            "title": "Voluntarios",
+            "description": "Tu tiempo y habilidades también son valiosos"
+        }
+    },
+    "contact": {
+        "title": "Contacto",
+        "subtitle": "Estamos para servirte",
+        "name": "Nombre",
+        "email": "Correo electrónico",
+        "message": "Mensaje",
+        "send": "Enviar",
+        "sending": "Enviando...",
+        "success": "Mensaje enviado exitosamente",
+        "error": "Error al enviar el mensaje",
+        "phone": "Teléfono",
+        "address": "Dirección",
+        "schedule": "Horarios de atención"
+    },
+    "footer": {
+        "companyName": "Ministerio Vida Eterna",
+        "tagline": "Transformando vidas por Cristo",
+        "description": "Una comunidad de fe comprometida con el crecimiento espiritual y el servicio a la comunidad.",
+        "quickLinks": "Enlaces Rápidos",
+        "contactInfo": "Información de Contacto",
+        "address": "Honduras",
+        "phone": "+504 9633-7658",
+        "email": "info@ministeriovidaeterna.org",
+        "copyright": "Todos los derechos reservados.",
+        "madeWith": "Hecho con",
+        "for": "para la gloria de Dios"
+    }
+}

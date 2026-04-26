@@ -1,0 +1,163 @@
+{
+    "common": {
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success"
+    },
+    "header": {
+        "home": "Home",
+        "history": "History",
+        "trips": "Activities",
+        "media": "Media",
+        "projects": "Projects",
+        "ministries": "Ministries",
+        "donations": "Donations",
+        "contact": "Contact",
+        "language": "Language",
+        "callUs": "Call Us",
+        "mainPhone": "Main Phone"
+    },
+    "hero": {
+        "title": "Church Ministry Eternal Life",
+        "welcome": "Welcome to the",
+        "description": "We are a faith community committed to spiritual growth, community service, and the proclamation of the Gospel. Our church is a place where lives are transformed by God's love.",
+        "visitUs": "Visit Us This Sunday",
+        "support": "Support the Work",
+        "community": "Community",
+        "communityDesc": "We live in unity and brotherly love",
+        "growth": "Growth",
+        "growthDesc": "Discipleship and biblical training",
+        "teaching": "Teaching",
+        "teachingDesc": "Solid and relevant Word of God"
+    },
+    "history": {
+        "title": "Our History",
+        "subtitle": "Ministry Eternal Life in Honduras",
+        "paragraph1": "God gave the vision to missionaries Víctor Solórzano and Doris Hernández to found Ministry Eternal Life in Honduras.",
+        "paragraph2": "After a visit as volunteers with their son Javier, they saw the healthcare needs and extreme poverty in the region, and God's goodness motivated them to start with children bringing medical brigades along with the transforming message of Jesus Christ.",
+        "paragraph3": "With that purpose, missionaries Fernando and Glenni arrived, answering the call to give life to the mission and preparing a youth team of missionaries who will carry the salvation message to the next generation.",
+        "purpose": "Purpose",
+        "purposeText": "Our fundamental purpose is to equip churches, youth, teachers, and families to be effective in fulfilling the Great Commission.",
+        "mission": "Mission",
+        "missionText": "Preach the good news (the gospel of Jesus Christ). Reach the lost and present them the salvation plan that is given in the name of Jesus Christ. Build up the church, strengthening them in love for God and biblical knowledge.",
+        "vision": "Vision",
+        "visionText": "Having incorporated the practice of developing ourselves through a good biblical base, we seek the development of members who exercise in their secular and spiritual life honesty, integrity, and holiness.",
+        "values": "Values",
+        "valuesList": "Honesty, Integrity and Holiness"
+    },
+    "trips": {
+        "title": "Ministry Activities",
+        "subtitle": "These are the works we currently do as a church in the community.",
+        "cards": {
+            "templo": {
+                "title": "Temple Construction",
+                "frequency": "Active project",
+                "description": "Structure advancement, roofing and improvements for the congregation space.",
+                "detail": "Continuous work with support from brothers and volunteers."
+            },
+            "culto": {
+                "title": "Church Services",
+                "frequency": "Weekly",
+                "description": "Worship, teaching and prayer meetings as a faith community.",
+                "detail": "Participation of children, youth and adults in each service."
+            },
+            "casas": {
+                "title": "Houses of Life",
+                "frequency": "Wednesday",
+                "description": "We visit member homes to develop biblical topics and open space for neighbors.",
+                "description": "Evangelism in homes and family spiritual strengthening."
+            }
+        }
+    },
+    "projects": {
+        "title": "Projects",
+        "subtitle": "Projects that transform lives in our community",
+        "cards": {
+            "medical": {
+                "title": "Medical Brigades",
+                "description": "Free medical care for needy communities"
+            },
+            "education": {
+                "title": "Biblical Education",
+                "description": "Classes and workshops for spiritual growth"
+            },
+            "community": {
+                "title": "Community Work",
+                "description": "Social service and mutual aid projects"
+            }
+        }
+    },
+    "ministries": {
+        "title": "Ministries",
+        "subtitle": "Areas of service within our church",
+        "music": {
+            "title": "Music Ministry",
+            "description": "Praise and worship"
+        },
+        "education": {
+            "title": "Biblical Education",
+            "description": "Classes and workshops for spiritual growth"
+        },
+        "community": {
+            "title": "Community Service",
+            "description": "Help to those in need"
+        },
+        "youth": {
+            "title": "Youth Ministry",
+            "description": "Discipleship and activities for youth"
+        },
+        "missions": {
+            "title": "Missions",
+            "description": "Evangelism projects"
+        },
+        "children": {
+            "title": "Children's Ministry",
+            "description": "Biblical education for the little ones"
+        }
+    },
+    "donations": {
+        "title": "Donations",
+        "subtitle": "Your support makes God's work possible",
+        "description": "All donations are used to advance God's kingdom and help those in need.",
+        "bank": {
+            "title": "Bank Transfer",
+            "account": "Account pending",
+            "note": "Contact us for more information"
+        },
+        "inKind": {
+            "title": "In-Kind Donations",
+            "description": "We accept donations of food, clothing and building materials"
+        },
+        "volunteer": {
+            "title": "Volunteers",
+            "description": "Your time and skills are also valuable"
+        }
+    },
+    "contact": {
+        "title": "Contact",
+        "subtitle": "We are here to serve you",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "send": "Send",
+        "sending": "Sending...",
+        "success": "Message sent successfully",
+        "error": "Error sending message",
+        "phone": "Phone",
+        "address": "Address",
+        "schedule": "Business hours"
+    },
+    "footer": {
+        "companyName": "Ministry Eternal Life",
+        "tagline": "Transforming lives for Christ",
+        "description": "A faith community committed to spiritual growth and community service.",
+        "quickLinks": "Quick Links",
+        "contactInfo": "Contact Information",
+        "address": "Honduras",
+        "phone": "+504 9633-7658",
+        "email": "info@ministeriovidaeterna.org",
+        "copyright": "All rights reserved.",
+        "madeWith": "Made with",
+        "for": "for God's glory"
+    }
+}
