@@ -23,13 +23,27 @@ interface LanguageProviderProps {
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('es');
+  const [language, setLanguageState] = useState<Language>(() => {
+    const saved = typeof window !== 'undefined' ? localStorage.getItem('app_language') : null;
+    if (saved === 'es' || saved === 'en') {
+      return saved;
+    }
+    return 'en'; // Default in English
+  });
   const [translations, setTranslations] = useState<Record<string, any>>({});
+
+  const setLanguage = (lang: Language) => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('app_language', lang);
+    }
+    setLanguageState(lang);
+  };
 
   useEffect(() => {
     const loadTranslations = async () => {
       try {
-        const response = await fetch(`/locales/${language}.json`);
+        const basePath = process.env.PUBLIC_URL || '';
+        const response = await fetch(`${basePath}/locales/${language}.json`);
         const data = await response.json();
         setTranslations(data);
       } catch (error) {

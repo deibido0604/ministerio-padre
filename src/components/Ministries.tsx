@@ -34,7 +34,7 @@ const Ministries: React.FC = () => {
               <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
               <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
               <button className="text-sky-600 font-medium flex items-center space-x-1 group-hover:space-x-2 transition-all">
-                <span>Saber más</span>
+                <span>{t('ministries.learnMore')}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

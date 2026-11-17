@@ -28,7 +28,14 @@
         "growth": "Growth",
         "growthDesc": "Discipleship and biblical training",
         "teaching": "Teaching",
-        "teachingDesc": "Solid and relevant Word of God"
+        "teachingDesc": "Solid and relevant Word of God",
+        "expandImage": "Click to expand",
+        "allPhotos": "All Photos",
+        "generalService": "General Service",
+        "bibleStudy": "Bible Study",
+        "viewMode": "View mode",
+        "fit": "Fit Photo",
+        "fill": "Fill Frame"
     },
     "history": {
         "title": "Our History",
@@ -36,6 +43,9 @@
         "paragraph1": "God gave the vision to missionaries Víctor Solórzano and Doris Hernández to found Ministry Eternal Life in Honduras.",
         "paragraph2": "After a visit as volunteers with their son Javier, they saw the healthcare needs and extreme poverty in the region, and God's goodness motivated them to start with children bringing medical brigades along with the transforming message of Jesus Christ.",
         "paragraph3": "With that purpose, missionaries Fernando and Glenni arrived, answering the call to give life to the mission and preparing a youth team of missionaries who will carry the salvation message to the next generation.",
+        "galleryTitle": "Church Gallery",
+        "gallerySubtitle": "Moments of worship, fellowship, and Biblical study",
+        "viewAll": "View all photos",
         "purpose": "Purpose",
         "purposeText": "Our fundamental purpose is to equip churches, youth, teachers, and families to be effective in fulfilling the Great Commission.",
         "mission": "Mission",
@@ -65,7 +75,7 @@
                 "title": "Houses of Life",
                 "frequency": "Wednesday",
                 "description": "We visit member homes to develop biblical topics and open space for neighbors.",
-                "description": "Evangelism in homes and family spiritual strengthening."
+                "detail": "Evangelism in homes and family spiritual strengthening."
             }
         }
     },
@@ -90,6 +100,7 @@
     "ministries": {
         "title": "Ministries",
         "subtitle": "Areas of service within our church",
+        "learnMore": "Learn more",
         "music": {
             "title": "Music Ministry",
             "description": "Praise and worship"
@@ -119,6 +130,20 @@
         "title": "Donations",
         "subtitle": "Your support makes God's work possible",
         "description": "All donations are used to advance God's kingdom and help those in need.",
+        "whyDonate": "Why Donate?",
+        "missionHeading": "Mission and Evangelism",
+        "missionDesc": "Supports the expansion of the gospel in our region.",
+        "socialHeading": "Social Outreach",
+        "socialDesc": "Food and support programs for vulnerable families.",
+        "infraHeading": "Infrastructure",
+        "infraDesc": "Improvement of our facilities to better serve our community.",
+        "otherWays": "Other ways to donate",
+        "inPerson": "In person",
+        "inPersonDesc": "Sundays during our services",
+        "onlineDonation": "Online Donation",
+        "onlineSubtitle": "Secure, fast and simple",
+        "donatePaypal": "Donate with PayPal",
+        "secure": "100% safe and secure",
         "bank": {
             "title": "Bank Transfer",
             "account": "Account pending",
@@ -136,16 +161,28 @@
     "contact": {
         "title": "Contact",
         "subtitle": "We are here to serve you",
+        "formTitle": "Send us a Message",
         "name": "Name",
+        "fullName": "Full Name",
+        "placeholderName": "Your name",
         "email": "Email",
+        "placeholderEmail": "your@email.com",
+        "phone": "Phone",
+        "placeholderPhone": "+1 (508) ...",
         "message": "Message",
+        "placeholderMessage": "How can we help you?",
         "send": "Send",
+        "sendMessage": "Send Message",
         "sending": "Sending...",
         "success": "Message sent successfully",
+        "sentSuccess": "Message Sent!",
+        "sentSuccessDesc": "Thank you for contacting us. We will get back to you soon.",
         "error": "Error sending message",
-        "phone": "Phone",
         "address": "Address",
-        "schedule": "Business hours"
+        "addressValue": "78-80 W Elm St, Brockton, MA 02301",
+        "schedule": "Service Hours",
+        "scheduleSundays": "Sundays: 9:00 AM & 6:00 PM",
+        "scheduleWednesdays": "Wednesdays: 7:00 PM (Bible Study)"
     },
     "footer": {
         "companyName": "Ministry Eternal Life",
@@ -153,9 +190,10 @@
         "description": "A faith community committed to spiritual growth and community service.",
         "quickLinks": "Quick Links",
         "contactInfo": "Contact Information",
-        "address": "Honduras",
+        "address": "78-80 W Elm St, Brockton, MA 02301",
         "phone": "+504 9633-7658",
         "email": "info@ministeriovidaeterna.org",
+        "socialMedia": "Social Media",
         "copyright": "All rights reserved.",
         "madeWith": "Made with",
         "for": "for God's glory"

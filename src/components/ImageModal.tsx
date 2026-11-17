@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface ImageModalProps {
@@ -8,6 +8,7 @@ interface ImageModalProps {
   onClose: () => void;
   onNext?: () => void;
   onPrev?: () => void;
+  title?: string;
 }
 
 const ImageModal: React.FC<ImageModalProps> = ({
@@ -17,8 +18,28 @@ const ImageModal: React.FC<ImageModalProps> = ({
   onClose,
   onNext,
   onPrev,
+  title,
 }) => {
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      } else if (e.key === 'ArrowRight' && onNext) {
+        onNext();
+      } else if (e.key === 'ArrowLeft' && onPrev) {
+        onPrev();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, onNext, onPrev, onClose]);
+
+  if (!isOpen || images.length === 0) return null;
+
+  const currentImage = images[currentIndex] || images[0];
 
   const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
@@ -28,46 +49,68 @@ const ImageModal: React.FC<ImageModalProps> = ({
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm transition-opacity"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-md p-4 sm:p-6 transition-all duration-300"
       onClick={handleBackdropClick}
+      role="dialog"
+      aria-modal="true"
     >
-      <div className="relative max-w-5xl w-full mx-4">
-        <button
-          onClick={onClose}
-          className="absolute -top-10 right-0 text-white hover:text-gray-300 transition-colors z-10"
-          aria-label="Cerrar"
-        >
-          <X className="h-8 w-8" />
-        </button>
+      {/* Botón de cerrar superior */}
+      <button
+        onClick={onClose}
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white/80 hover:text-white bg-white/10 hover:bg-white/20 p-2.5 rounded-full backdrop-blur-md transition-all z-20 shadow-lg"
+        aria-label="Cerrar modal"
+      >
+        <X className="h-6 w-6" />
+      </button>
 
-        <img
-          src={images[currentIndex]}
-          alt={`Imagen ${currentIndex + 1}`}
-          className="w-full h-auto max-h-[90vh] object-contain rounded-lg shadow-2xl"
-        />
+      {/* Contenedor principal de la imagen */}
+      <div className="relative flex flex-col items-center justify-center max-w-5xl w-full h-full max-h-[92vh]">
+        <div className="relative flex items-center justify-center w-full flex-1 min-h-0">
+          <img
+            src={currentImage}
+            alt={title || `Imagen ${currentIndex + 1}`}
+            className="max-h-[82vh] max-w-[90vw] md:max-w-[80vw] w-auto h-auto object-contain rounded-2xl shadow-2xl select-none transition-all duration-300 ring-1 ring-white/10"
+          />
 
-        {images.length > 1 && (
-          <>
-            <button
-              onClick={onPrev}
-              className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
-              aria-label="Anterior"
-            >
-              <ChevronLeft className="h-6 w-6" />
-            </button>
-            <button
-              onClick={onNext}
-              className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-colors"
-              aria-label="Siguiente"
-            >
-              <ChevronRight className="h-6 w-6" />
-            </button>
+          {images.length > 1 && (
+            <>
+              {onPrev && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onPrev();
+                  }}
+                  className="absolute left-2 sm:-left-4 md:-left-8 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/90 text-white p-3 rounded-full backdrop-blur-md transition-all shadow-xl hover:scale-105 ring-1 ring-white/20 z-10"
+                  aria-label="Imagen anterior"
+                >
+                  <ChevronLeft className="h-6 w-6" />
+                </button>
+              )}
 
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 text-white px-3 py-1 rounded-full text-sm">
-              {currentIndex + 1} / {images.length}
-            </div>
-          </>
-        )}
+              {onNext && (
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNext();
+                  }}
+                  className="absolute right-2 sm:-right-4 md:-right-8 top-1/2 -translate-y-1/2 bg-black/60 hover:bg-black/90 text-white p-3 rounded-full backdrop-blur-md transition-all shadow-xl hover:scale-105 ring-1 ring-white/20 z-10"
+                  aria-label="Siguiente imagen"
+                >
+                  <ChevronRight className="h-6 w-6" />
+                </button>
+              )}
+            </>
+          )}
+        </div>
+
+        {/* Barra inferior con contador y título */}
+        <div className="mt-3 flex items-center justify-center space-x-3 text-white text-sm select-none">
+          <div className="bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-full ring-1 ring-white/15">
+            <span className="font-semibold">{currentIndex + 1}</span>
+            <span className="text-white/60"> / {images.length}</span>
+            {title && <span className="ml-2 text-white/80">· {title}</span>}
+          </div>
+        </div>
       </div>
     </div>
   );

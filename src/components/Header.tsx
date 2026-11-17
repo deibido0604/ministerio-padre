@@ -167,15 +167,20 @@ const Header: React.FC = () => {
                   </div>
                 </a>
                 
-                <div className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm">
+                <a
+                  href="https://maps.google.com/?q=78-80+W+Elm+St,+Brockton,+MA+02301"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center space-x-3 p-3 bg-white rounded-lg shadow-sm hover:bg-gray-50 transition-colors"
+                >
                   <div className="bg-blue-100 p-2 rounded-full">
                     <MapPin className="h-5 w-5 text-blue-600" />
                   </div>
                   <div>
-                    <p className="font-medium text-gray-700">San Pedro Sula</p>
-                    <p className="text-sm text-gray-500">Honduras</p>
+                    <p className="font-medium text-gray-700">78-80 W Elm St</p>
+                    <p className="text-sm text-gray-500">Brockton, MA 02301</p>
                   </div>
-                </div>
+                </a>
               </div>
             </div>
           </div>

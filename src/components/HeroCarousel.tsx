@@ -1,86 +1,72 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronLeft, ChevronRight, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect, useMemo } from 'react';
+import { ChevronLeft, ChevronRight, Maximize2, Sparkles } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import ImageModal from './ImageModal';
 
-// Images located in public/img — adjust list as needed
-const CAROUSEL_IMAGE_CANDIDATES: string[] = [
-  '/img/Culto General/Culto General 1.jpeg',
-  '/img/Culto General/Culto General 2.jpeg',
-  '/img/Culto General/Culto General 3.jpeg',
-  '/img/Culto General/Culto General 4.jpeg',
-  '/img/Culto General/Culto General 5.jpeg',
-  '/img/Estudio Biblico/Estudio Biblico 1.jpeg',
-  '/img/Estudio Biblico/Estudio Biblico 2.jpeg',
-  '/img/Estudio Biblico/Estudio Biblico 3.jpeg',
-  '/img/Estudio Biblico/Estudio Biblico 4.jpeg',
-  '/img/Estudio Biblico/Estudio Biblico 5.jpeg',
+interface GalleryPhoto {
+  src: string;
+  category: 'general' | 'bibleStudy';
+  titleKey: string;
+}
+
+const RAW_PHOTOS: GalleryPhoto[] = [
+  { src: `${process.env.PUBLIC_URL || ''}/img/Culto General/Culto General 1.jpeg`, category: 'general', titleKey: 'hero.generalService' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Culto General/Culto General 2.jpeg`, category: 'general', titleKey: 'hero.generalService' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Culto General/Culto General 3.jpeg`, category: 'general', titleKey: 'hero.generalService' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Culto General/Culto General 4.jpeg`, category: 'general', titleKey: 'hero.generalService' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Culto General/Culto General 5.jpeg`, category: 'general', titleKey: 'hero.generalService' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Estudio Biblico/Estudio Biblico 1.jpeg`, category: 'bibleStudy', titleKey: 'hero.bibleStudy' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Estudio Biblico/Estudio Biblico 2.jpeg`, category: 'bibleStudy', titleKey: 'hero.bibleStudy' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Estudio Biblico/Estudio Biblico 3.jpeg`, category: 'bibleStudy', titleKey: 'hero.bibleStudy' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Estudio Biblico/Estudio Biblico 4.jpeg`, category: 'bibleStudy', titleKey: 'hero.bibleStudy' },
+  { src: `${process.env.PUBLIC_URL || ''}/img/Estudio Biblico/Estudio Biblico 5.jpeg`, category: 'bibleStudy', titleKey: 'hero.bibleStudy' },
 ];
 
-const Hero: React.FC = () => {
+const CAROUSEL_PHOTOS: GalleryPhoto[] = RAW_PHOTOS.map((p) => ({
+  ...p,
+  src: encodeURI(p.src),
+}));
+
+const HeroCarousel: React.FC = () => {
   const { t } = useLanguage();
+  const [activeCategory, setActiveCategory] = useState<'all' | 'general' | 'bibleStudy'>('all');
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
-  const [carouselImages, setCarouselImages] = useState<string[]>([]);
   const [modalOpen, setModalOpen] = useState(false);
+  const [fitMode, setFitMode] = useState<'contain' | 'cover'>('contain');
+
+  const filteredPhotos = useMemo(() => {
+    if (activeCategory === 'all') return CAROUSEL_PHOTOS;
+    return CAROUSEL_PHOTOS.filter((p) => p.category === activeCategory);
+  }, [activeCategory]);
 
   useEffect(() => {
-    let isMounted = true;
-
-    const imageExists = (src: string): Promise<boolean> => {
-      return new Promise((resolve) => {
-        const img = new window.Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = src;
-      });
-    };
-
-    const loadAvailableImages = async () => {
-      const checks = await Promise.all(
-        CAROUSEL_IMAGE_CANDIDATES.map(async (src) => {
-          const exists = await imageExists(src);
-          return exists ? src : null;
-        })
-      );
-
-      const availableImages = checks.filter((src): src is string => src !== null);
-
-      if (isMounted) {
-        setCarouselImages(availableImages);
-      }
-    };
-
-    loadAvailableImages();
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+    setCurrentSlide(0);
+  }, [activeCategory]);
 
   useEffect(() => {
-    if (!isHovered && carouselImages.length > 0) {
-      const interval = setInterval(() => {
-        setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-      }, 4000);
-      return () => clearInterval(interval);
-    }
-  }, [carouselImages.length, isHovered]);
-
-  useEffect(() => {
-    if (currentSlide >= carouselImages.length) {
+    if (currentSlide >= filteredPhotos.length) {
       setCurrentSlide(0);
     }
-  }, [carouselImages.length, currentSlide]);
+  }, [filteredPhotos.length, currentSlide]);
+
+  useEffect(() => {
+    if (!isHovered && filteredPhotos.length > 1) {
+      const interval = setInterval(() => {
+        setCurrentSlide((prev) => (prev + 1) % filteredPhotos.length);
+      }, 4500);
+      return () => clearInterval(interval);
+    }
+  }, [filteredPhotos.length, isHovered]);
 
   const nextSlide = () => {
-    if (carouselImages.length === 0) return;
-    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    if (filteredPhotos.length === 0) return;
+    setCurrentSlide((prev) => (prev + 1) % filteredPhotos.length);
   };
 
   const prevSlide = () => {
-    if (carouselImages.length === 0) return;
-    setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+    if (filteredPhotos.length === 0) return;
+    setCurrentSlide((prev) => (prev - 1 + filteredPhotos.length) % filteredPhotos.length);
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -92,141 +78,231 @@ const Hero: React.FC = () => {
 
   const openModal = () => setModalOpen(true);
   const closeModal = () => setModalOpen(false);
-  const nextModalImage = () => setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-  const prevModalImage = () => setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+
+  const currentPhoto = filteredPhotos[currentSlide] || CAROUSEL_PHOTOS[0];
+  const allImagesForModal = filteredPhotos.map((p) => p.src);
 
   return (
-    <section id="home" className="relative bg-gray-50">
-      <div className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          <div
-            className="relative h-72 md:h-80 lg:h-96 rounded-xl overflow-hidden shadow-xl"
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-          >
-            <div className="absolute inset-0 transition-opacity duration-700 ease-in-out opacity-100">
-              {carouselImages.length > 0 ? (
-                <>
-                  <img
-                    src={carouselImages[currentSlide]}
-                    alt={`${t('hero.title')} ${currentSlide + 1}`}
-                    className="w-full h-full object-cover cursor-zoom-in"
-                    onClick={openModal}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent pointer-events-none"></div>
+    <section id="home" className="relative bg-gradient-to-b from-sky-50/60 via-white to-gray-50 pt-6 pb-16 md:py-16">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          {/* Columna Izquierda: Galería interactiva con visor optimizado */}
+          <div className="lg:col-span-6 w-full">
+            {/* Filtros de categoría */}
+            <div className="flex items-center justify-between mb-3">
+              <div className="inline-flex p-1 bg-gray-100 rounded-xl space-x-1 text-xs sm:text-sm">
+                <button
+                  onClick={() => setActiveCategory('all')}
+                  className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
+                    activeCategory === 'all'
+                      ? 'bg-white text-blue-600 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  {t('hero.allPhotos')} ({CAROUSEL_PHOTOS.length})
+                </button>
+                <button
+                  onClick={() => setActiveCategory('general')}
+                  className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
+                    activeCategory === 'general'
+                      ? 'bg-white text-blue-600 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  {t('hero.generalService')}
+                </button>
+                <button
+                  onClick={() => setActiveCategory('bibleStudy')}
+                  className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
+                    activeCategory === 'bibleStudy'
+                      ? 'bg-white text-blue-600 shadow-sm'
+                      : 'text-gray-600 hover:text-gray-900'
+                  }`}
+                >
+                  {t('hero.bibleStudy')}
+                </button>
+              </div>
 
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white pointer-events-none">
-                    <h3 className="text-xl font-bold mb-2">{t('hero.title')}</h3>
-                    <p className="text-sm opacity-90">
-                      {currentSlide + 1} / {carouselImages.length} · {t('hero.community')}
-                    </p>
-                  </div>
-                </>
-              ) : (
-                <div className="h-full w-full bg-gray-200 flex items-center justify-center">
-                  <p className="text-gray-600 font-medium">{t('media.photos')}</p>
-                </div>
-              )}
+              {/* Botón para alternar Ajustar / Llenar */}
+              <button
+                onClick={() => setFitMode((m) => (m === 'contain' ? 'cover' : 'contain'))}
+                className="hidden sm:inline-flex items-center space-x-1 text-xs text-gray-500 hover:text-blue-600 transition-colors bg-white px-2.5 py-1.5 rounded-lg border border-gray-200 shadow-sm"
+                title={t('hero.fit') + ' / ' + t('hero.fill')}
+              >
+                <span>{fitMode === 'contain' ? t('hero.fit') : t('hero.fill')}</span>
+              </button>
             </div>
 
-            {carouselImages.length > 1 && (
-              <>
-                <button
-                  onClick={prevSlide}
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors z-10"
-                  aria-label="Slide anterior"
-                >
-                  <ChevronLeft className="h-5 w-5" />
-                </button>
-                <button
-                  onClick={nextSlide}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/30 hover:bg-black/50 text-white p-2 rounded-full transition-colors z-10"
-                  aria-label="Siguiente slide"
-                >
-                  <ChevronRight className="h-5 w-5" />
-                </button>
-              </>
-            )}
+            {/* Contenedor del Carrusel con fondo difuminado y preservación de aspecto */}
+            <div
+              className="relative h-80 sm:h-[420px] md:h-[460px] lg:h-[500px] rounded-2xl overflow-hidden shadow-2xl bg-gray-950 ring-1 ring-black/10 select-none group"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+            >
+              {/* Capa 1: Fondo difuminado que llena el espacio armónicamente con los colores de la foto */}
+              <img
+                src={currentPhoto.src}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover filter blur-2xl scale-125 opacity-40 brightness-75 transition-opacity duration-700 pointer-events-none"
+              />
+
+              {/* Capa 2: Foto nítida completa (sin recortar personas ni rostros) */}
+              <div className="relative z-10 w-full h-full flex items-center justify-center p-2 sm:p-4">
+                <img
+                  src={currentPhoto.src}
+                  alt={t(currentPhoto.titleKey)}
+                  className={`max-w-full max-h-full rounded-xl drop-shadow-2xl cursor-zoom-in transition-all duration-500 ${
+                    fitMode === 'cover' ? 'w-full h-full object-cover' : 'w-auto h-auto object-contain'
+                  }`}
+                  onClick={openModal}
+                />
+              </div>
+
+              {/* Badge superior izquierdo: Categoría */}
+              <div className="absolute top-3 left-3 z-20 pointer-events-none">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-black/50 backdrop-blur-md text-white ring-1 ring-white/20 shadow-md">
+                  <Sparkles className="w-3.5 h-3.5 mr-1.5 text-blue-300" />
+                  {t(currentPhoto.titleKey)}
+                </span>
+              </div>
+
+              {/* Botón superior derecho: Ampliar a pantalla completa */}
+              <button
+                onClick={openModal}
+                className="absolute top-3 right-3 z-20 flex items-center space-x-1 px-3 py-1 rounded-full text-xs font-medium bg-black/50 hover:bg-black/75 backdrop-blur-md text-white transition-all ring-1 ring-white/20 shadow-md"
+                aria-label={t('hero.expandImage')}
+              >
+                <Maximize2 className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">{t('hero.expandImage')}</span>
+              </button>
+
+              {/* Flechas de navegación lateral */}
+              {filteredPhotos.length > 1 && (
+                <>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevSlide();
+                    }}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 text-white p-2.5 rounded-full backdrop-blur-md transition-all shadow-lg ring-1 ring-white/20 hover:scale-105"
+                    aria-label="Slide anterior"
+                  >
+                    <ChevronLeft className="h-5 w-5" />
+                  </button>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextSlide();
+                    }}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-black/40 hover:bg-black/70 text-white p-2.5 rounded-full backdrop-blur-md transition-all shadow-lg ring-1 ring-white/20 hover:scale-105"
+                    aria-label="Siguiente slide"
+                  >
+                    <ChevronRight className="h-5 w-5" />
+                  </button>
+                </>
+              )}
+
+              {/* Barra inferior: Indicadores de puntos y contador */}
+              <div className="absolute bottom-0 inset-x-0 z-20 bg-gradient-to-t from-black/70 via-black/30 to-transparent pt-6 pb-3 px-4 flex items-center justify-between">
+                {/* Dots */}
+                <div className="flex items-center space-x-1.5 overflow-x-auto max-w-[70%] py-1">
+                  {filteredPhotos.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentSlide(idx)}
+                      className={`h-2 rounded-full transition-all ${
+                        idx === currentSlide
+                          ? 'w-6 bg-blue-400'
+                          : 'w-2 bg-white/50 hover:bg-white/80'
+                      }`}
+                      aria-label={`Ir a foto ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+
+                {/* Contador */}
+                <div className="text-white text-xs font-medium bg-black/40 backdrop-blur-md px-2.5 py-1 rounded-full ring-1 ring-white/10">
+                  <span>{currentSlide + 1}</span>
+                  <span className="text-white/60"> / {filteredPhotos.length}</span>
+                </div>
+              </div>
+            </div>
           </div>
 
-          <div className="text-center lg:text-left">
-            <div className="mb-6">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
-                {t('hero.welcome')} <span className="text-blue-600">{t('hero.title')}</span>
-              </h2>
-              <p className="text-gray-600 text-lg">{t('hero.description')}</p>
+          {/* Columna Derecha: Contenido y presentación */}
+          <div className="lg:col-span-6 text-center lg:text-left">
+            <div className="inline-block px-4 py-1.5 bg-blue-100 text-blue-700 font-semibold text-sm rounded-full mb-4">
+              {t('hero.welcome')}
             </div>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 leading-tight mb-4">
+              <span className="text-blue-600">{t('hero.title')}</span>
+            </h1>
+
+            <p className="text-gray-600 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl mx-auto lg:mx-0">
+              {t('hero.description')}
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
               <button
                 onClick={() => scrollToSection('contact')}
-                className="px-6 py-3 bg-blue-600 text-white font-medium rounded-md hover:bg-blue-700 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="px-6 py-3.5 bg-gradient-to-r from-blue-600 to-sky-600 hover:from-blue-700 hover:to-sky-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all transform hover:-translate-y-0.5"
               >
                 {t('hero.visitUs')}
               </button>
               <button
                 onClick={() => scrollToSection('donations')}
-                className="px-6 py-3 border-2 border-blue-600 text-blue-600 font-medium rounded-md hover:bg-blue-50 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
+                className="px-6 py-3.5 border-2 border-blue-600 text-blue-600 hover:bg-blue-50 font-semibold rounded-xl transition-all"
               >
                 {t('hero.support')}
               </button>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mb-3 mx-auto lg:mx-0">
-                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd" />
-                  </svg>
+            {/* 3 Tarjetas de pilares */}
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 text-left">
+              <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-2 text-blue-600 font-bold">
+                  👥
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-1">{t('hero.community')}</h3>
-                <p className="text-sm text-gray-600">{t('hero.communityDesc')}</p>
+                <h2 className="font-bold text-gray-800 text-sm mb-1">{t('hero.community')}</h2>
+                <p className="text-xs text-gray-600">{t('hero.communityDesc')}</p>
               </div>
 
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mb-3 mx-auto lg:mx-0">
-                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.214.33-.403.713-.57 1.116-.334.804-.614 1.768-.84 2.734a31.365 31.365 0 00-.613 3.58 2.64 2.64 0 01-.945-1.067c-.328-.68-.398-1.534-.398-2.654A1 1 0 005.05 6.05 6.981 6.981 0 003 11a7 7 0 1011.95-4.95c-.592-.591-.98-.985-1.348-1.467-.363-.476-.724-1.063-1.207-2.03zM12.12 15.12A3 3 0 017 13s.879.5 2.5.5c0-1 .5-4 1.25-4.5.5 1 .786 1.293 1.371 1.879A2.99 2.99 0 0113 13a2.99 2.99 0 01-.879 2.121z" clipRule="evenodd" />
-                  </svg>
+              <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center mb-2 text-emerald-600 font-bold">
+                  🌱
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-1">{t('hero.growth')}</h3>
-                <p className="text-sm text-gray-600">{t('hero.growthDesc')}</p>
+                <h2 className="font-bold text-gray-800 text-sm mb-1">{t('hero.growth')}</h2>
+                <p className="text-xs text-gray-600">{t('hero.growthDesc')}</p>
               </div>
 
-              <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mb-3 mx-auto lg:mx-0">
-                  <svg className="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z" />
-                  </svg>
+              <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
+                <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center mb-2 text-amber-600 font-bold">
+                  📖
                 </div>
-                <h3 className="font-semibold text-gray-800 mb-1">{t('hero.teaching')}</h3>
-                <p className="text-sm text-gray-600">{t('hero.teachingDesc')}</p>
+                <h2 className="font-bold text-gray-800 text-sm mb-1">{t('hero.teaching')}</h2>
+                <p className="text-xs text-gray-600">{t('hero.teachingDesc')}</p>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="mt-8 text-center">
-          <button
-            onClick={() => scrollToSection('gallery')}
-            className="animate-bounce text-gray-400 hover:text-blue-600 transition-colors"
-            aria-label="Scroll down"
-          >
-            <ChevronDown className="h-6 w-6 mx-auto" />
-          </button>
         </div>
       </div>
 
+      {/* Modal visor de alta resolución */}
       <ImageModal
         isOpen={modalOpen}
-        images={carouselImages}
+        images={allImagesForModal}
         currentIndex={currentSlide}
         onClose={closeModal}
-        onNext={nextModalImage}
-        onPrev={prevModalImage}
+        onNext={nextSlide}
+        onPrev={prevSlide}
+        title={t(currentPhoto.titleKey)}
       />
     </section>
   );
 };
 
-export default Hero;
+export default HeroCarousel;

@@ -40,8 +40,15 @@ const Footer: React.FC = () => {
             <h4 className="text-lg font-semibold mb-4">{t('footer.contactInfo')}</h4>
             <ul className="space-y-3">
               <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-gray-400 mt-0.5" />
-                <span className="text-gray-400">{t('footer.address')}</span>
+                <MapPin className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+                <a
+                  href="https://maps.google.com/?q=78-80+W+Elm+St,+Brockton,+MA+02301"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  {t('footer.address')}
+                </a>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-gray-400" />
@@ -55,7 +62,7 @@ const Footer: React.FC = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-semibold mb-4">Redes Sociales</h4>
+            <h4 className="text-lg font-semibold mb-4">{t('footer.socialMedia')}</h4>
             <div className="flex space-x-4">
               <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-2 rounded-full hover:bg-[#1877f2] transition-colors">
                 <span className="text-white font-bold">f</span>
