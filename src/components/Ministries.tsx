@@ -1,42 +1,91 @@
 import React from 'react';
-import { Music, BookOpen, Heart, Users, Globe, Baby, ArrowRight } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Ministries: React.FC = () => {
   const { t } = useLanguage();
 
   const ministries = [
-    { icon: Music, title: t('ministries.music.title'), description: t('ministries.music.description'), color: 'from-rose-500 to-rose-600' },
-    { icon: BookOpen, title: t('ministries.education.title'), description: t('ministries.education.description'), color: 'from-sky-500 to-blue-600' },
-    { icon: Heart, title: t('ministries.community.title'), description: t('ministries.community.description'), color: 'from-emerald-500 to-teal-600' },
-    { icon: Users, title: t('ministries.youth.title'), description: t('ministries.youth.description'), color: 'from-amber-500 to-orange-600' },
-    { icon: Globe, title: t('ministries.missions.title'), description: t('ministries.missions.description'), color: 'from-violet-500 to-purple-600' },
-    { icon: Baby, title: t('ministries.children.title'), description: t('ministries.children.description'), color: 'from-pink-500 to-rose-600' },
+    {
+      num: '01',
+      title: t('ministries.music.title'),
+      description: t('ministries.music.description'),
+      accent: 'border-rose-500 text-rose-600',
+    },
+    {
+      num: '02',
+      title: t('ministries.education.title'),
+      description: t('ministries.education.description'),
+      accent: 'border-blue-500 text-blue-600',
+    },
+    {
+      num: '03',
+      title: t('ministries.community.title'),
+      description: t('ministries.community.description'),
+      accent: 'border-emerald-500 text-emerald-600',
+    },
+    {
+      num: '04',
+      title: t('ministries.youth.title'),
+      description: t('ministries.youth.description'),
+      accent: 'border-amber-500 text-amber-600',
+    },
+    {
+      num: '05',
+      title: t('ministries.missions.title'),
+      description: t('ministries.missions.description'),
+      accent: 'border-violet-500 text-violet-600',
+    },
+    {
+      num: '06',
+      title: t('ministries.children.title'),
+      description: t('ministries.children.description'),
+      accent: 'border-pink-500 text-pink-600',
+    },
   ];
 
   return (
-    <section id="ministries" className="py-20 bg-gradient-to-b from-gray-50 to-white">
+    <section id="ministries" className="py-20 bg-gray-50 text-center">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">{t('ministries.title')}</h2>
-          <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">{t('ministries.subtitle')}</p>
+        {/* Encabezado centrado */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">
+            {t('footer.companyName')}
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
+            {t('ministries.title')}
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {t('ministries.subtitle')}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Tarjetas de ministerios completamente centradas */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {ministries.map((item, index) => (
             <div
               key={index}
-              className="group bg-white rounded-2xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className={`bg-white rounded-2xl p-6 sm:p-7 border-t-4 ${item.accent.split(' ')[0]} border-x border-b border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col items-center justify-between text-center`}
             >
-              <div className={`w-14 h-14 bg-gradient-to-br ${item.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}>
-                <item.icon className="w-7 h-7 text-white" />
+              <div className="flex flex-col items-center text-center w-full">
+                <span className={`text-xs font-bold tracking-wider ${item.accent.split(' ')[1]} mb-1 block`}>
+                  {item.num}
+                </span>
+                <h3 className="text-xl font-bold text-gray-900 mt-1 mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed text-sm max-w-xs mx-auto">
+                  {item.description}
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{item.title}</h3>
-              <p className="text-gray-600 leading-relaxed mb-4">{item.description}</p>
-              <button className="text-sky-600 font-medium flex items-center space-x-1 group-hover:space-x-2 transition-all">
-                <span>{t('ministries.learnMore')}</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+
+              <div className="mt-6 pt-4 border-t border-gray-50 w-full flex justify-center">
+                <a
+                  href="#contact"
+                  className="text-xs font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                >
+                  {t('ministries.learnMore')}
+                </a>
+              </div>
             </div>
           ))}
         </div>

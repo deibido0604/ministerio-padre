@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Mail, Clock, Send, CheckCircle, MessageCircle } from 'lucide-react';
+import { MapPin, Phone, Mail, Clock, MessageSquare } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Contact: React.FC = () => {
@@ -11,12 +11,12 @@ const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    console.log('Formulario enviado:', formData);
-    setSubmitted(true);
-    setLoading(false);
-    setFormData({ name: '', email: '', phone: '', message: '' });
-    setTimeout(() => setSubmitted(false), 3000);
+    setTimeout(() => {
+      setLoading(false);
+      setSubmitted(true);
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setTimeout(() => setSubmitted(false), 5000);
+    }, 1000);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -24,176 +24,209 @@ const Contact: React.FC = () => {
   };
 
   const whatsappNumber = "50496337658";
-  const whatsappMessage = encodeURIComponent("Hola, me gustaría obtener más información sobre el ministerio");
+  const whatsappMessage = encodeURIComponent("Hello, I would like more information about the ministry");
   const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-20 bg-gray-50 text-center">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">{t('contact.title')}</h2>
-          <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">{t('contact.subtitle')}</p>
+        {/* Encabezado centrado */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">
+            {t('footer.companyName')}
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
+            {t('contact.title')}
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {t('contact.subtitle')}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Columna izquierda - Información */}
-          <div className="space-y-6">
-            <div className="bg-white rounded-2xl p-6 shadow-sm">
-              <h3 className="text-xl font-bold text-gray-800 mb-6">{t('footer.contactInfo')}</h3>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-sky-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-5 h-5 text-sky-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">{t('contact.address')}</p>
-                    <a
-                      href="https://maps.google.com/?q=78-80+W+Elm+St,+Brockton,+MA+02301"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-sky-600 transition-colors"
-                    >
-                      78-80 W Elm St<br />Brockton, MA 02301
-                    </a>
-                  </div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 max-w-5xl mx-auto items-start">
+          {/* Columna izquierda - Datos de Contacto centrados */}
+          <div className="lg:col-span-5 space-y-4 flex flex-col items-center w-full">
+            <div className="bg-white rounded-2xl p-6 sm:p-7 border border-gray-200/80 shadow-md space-y-5 w-full flex flex-col items-center text-center">
+              {/* Dirección */}
+              <div className="flex flex-col items-center text-center w-full">
+                <div className="sm:hidden w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-1.5">
+                  <MapPin className="w-3.5 h-3.5" />
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-sky-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-5 h-5 text-sky-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">{t('contact.phone')}</p>
-                    <a href="tel:+50496337658" className="text-gray-600 hover:text-sky-600">+504 9633-7658</a>
-                  </div>
+                <p className="text-xs uppercase tracking-wider font-semibold text-blue-600 mb-1">
+                  {t('contact.address')}
+                </p>
+                <a
+                  href="https://maps.google.com/?q=78-80+W+Elm+St,+Brockton,+MA+02301"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-900 hover:text-blue-600 font-medium transition-colors leading-relaxed block text-center"
+                >
+                  78-80 W Elm St<br />Brockton, MA 02301
+                </a>
+              </div>
+
+              {/* Teléfono */}
+              <div className="border-t border-gray-100 pt-4 flex flex-col items-center text-center w-full">
+                <div className="sm:hidden w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-1.5">
+                  <Phone className="w-3.5 h-3.5" />
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-sky-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-5 h-5 text-sky-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">{t('contact.email')}</p>
-                    <a href="mailto:info@ministeriovidaeterna.org" className="text-gray-600 hover:text-sky-600">info@ministeriovidaeterna.org</a>
-                  </div>
+                <p className="text-xs uppercase tracking-wider font-semibold text-blue-600 mb-1">
+                  {t('contact.phone')}
+                </p>
+                <a
+                  href="tel:+50496337658"
+                  className="text-gray-900 hover:text-blue-600 font-medium transition-colors text-center"
+                >
+                  +504 9633-7658
+                </a>
+              </div>
+
+              {/* Email */}
+              <div className="border-t border-gray-100 pt-4 flex flex-col items-center text-center w-full">
+                <div className="sm:hidden w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-1.5">
+                  <Mail className="w-3.5 h-3.5" />
                 </div>
-                <div className="flex items-start space-x-4">
-                  <div className="w-10 h-10 bg-sky-100 rounded-full flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-5 h-5 text-sky-600" />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-800">{t('contact.schedule')}</p>
-                    <p className="text-gray-600">
-                      {t('contact.scheduleSundays')}<br />
-                      {t('contact.scheduleWednesdays')}
-                    </p>
-                  </div>
+                <p className="text-xs uppercase tracking-wider font-semibold text-blue-600 mb-1">
+                  Email
+                </p>
+                <a
+                  href="mailto:info@ministeriovidaeterna.org"
+                  className="text-gray-900 hover:text-blue-600 font-medium transition-colors text-center text-sm sm:text-base break-all sm:break-normal"
+                >
+                  info@ministeriovidaeterna.org
+                </a>
+              </div>
+
+              {/* Horarios */}
+              <div className="border-t border-gray-100 pt-4 flex flex-col items-center text-center w-full">
+                <div className="sm:hidden w-7 h-7 rounded-full bg-blue-50 text-blue-600 flex items-center justify-center mb-1.5">
+                  <Clock className="w-3.5 h-3.5" />
                 </div>
+                <p className="text-xs uppercase tracking-wider font-semibold text-blue-600 mb-1">
+                  {t('contact.schedule')}
+                </p>
+                <p className="text-gray-800 font-medium text-sm leading-relaxed text-center">
+                  {t('contact.scheduleSundays')}<br />
+                  {t('contact.scheduleWednesdays')}
+                </p>
               </div>
             </div>
 
+            {/* Botón WhatsApp */}
             <a
               href={whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center space-x-3 w-full py-4 bg-gradient-to-r from-green-500 to-emerald-600 text-white font-semibold rounded-xl hover:from-green-600 hover:to-emerald-700 transition-all shadow-lg"
+              className="flex items-center justify-center space-x-2 w-full py-3.5 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl transition-all shadow-md text-center text-sm"
             >
-              <MessageCircle className="w-5 h-5" />
+              <MessageSquare className="w-4 h-4 sm:hidden flex-shrink-0" />
               <span>WhatsApp</span>
             </a>
           </div>
 
-          {/* Columna derecha - Formulario */}
-          <div className="bg-white rounded-2xl p-8 shadow-sm">
-            <h3 className="text-2xl font-bold text-gray-800 mb-6">{t('contact.formTitle')}</h3>
+          {/* Columna derecha - Formulario claramente distinguible */}
+          <div className="lg:col-span-7 bg-white rounded-2xl p-6 sm:p-8 md:p-9 border border-gray-200 shadow-xl ring-1 ring-black/5 flex flex-col items-center w-full">
+            {/* Cabecera del formulario */}
+            <div className="text-center mb-6 w-full pb-4 border-b border-gray-100">
+              <span className="inline-block px-3 py-1 bg-blue-50 text-blue-700 text-xs font-bold uppercase tracking-wider rounded-md mb-2 border border-blue-100">
+                {t('contact.formBadge')}
+              </span>
+              <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                {t('contact.formTitle')}
+              </h3>
+              <p className="text-gray-500 text-xs sm:text-sm">
+                {t('contact.formSubtitle')}
+              </p>
+            </div>
             
             {submitted ? (
-              <div className="text-center py-12">
-                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
-                <h4 className="text-xl font-bold text-gray-800 mb-2">{t('contact.sentSuccess')}</h4>
-                <p className="text-gray-600">{t('contact.sentSuccessDesc')}</p>
+              <div className="text-center py-10 w-full bg-emerald-50 rounded-xl border border-emerald-200 p-6">
+                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-3 font-bold text-xl">
+                  ✓
+                </div>
+                <h4 className="text-xl font-bold text-gray-900 mb-1">{t('contact.sentSuccess')}</h4>
+                <p className="text-gray-600 text-sm">{t('contact.sentSuccessDesc')}</p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4 w-full">
+                {/* Nombre */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">{t('contact.fullName')}</label>
+                  <label className="block text-gray-800 text-xs sm:text-sm font-semibold mb-1.5 text-left">
+                    {t('contact.fullName')} <span className="text-red-500">*</span>
+                  </label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition"
+                    className="w-full px-4 py-3 bg-gray-50/80 border border-gray-300 rounded-xl focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none transition text-sm text-gray-900 placeholder-gray-400 shadow-sm"
                     placeholder={t('contact.placeholderName')}
                   />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                {/* Email y Teléfono */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">{t('contact.email')}</label>
+                    <label className="block text-gray-800 text-xs sm:text-sm font-semibold mb-1.5 text-left">
+                      {t('contact.email')} <span className="text-red-500">*</span>
+                    </label>
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition"
+                      className="w-full px-4 py-3 bg-gray-50/80 border border-gray-300 rounded-xl focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none transition text-sm text-gray-900 placeholder-gray-400 shadow-sm"
                       placeholder={t('contact.placeholderEmail')}
                     />
                   </div>
                   <div>
-                    <label className="block text-gray-700 font-medium mb-2">{t('contact.phone')}</label>
+                    <label className="block text-gray-800 text-xs sm:text-sm font-semibold mb-1.5 text-left">
+                      {t('contact.phone')}
+                    </label>
                     <input
                       type="tel"
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition"
+                      className="w-full px-4 py-3 bg-gray-50/80 border border-gray-300 rounded-xl focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none transition text-sm text-gray-900 placeholder-gray-400 shadow-sm"
                       placeholder={t('contact.placeholderPhone')}
                     />
                   </div>
                 </div>
+
+                {/* Mensaje */}
                 <div>
-                  <label className="block text-gray-700 font-medium mb-2">{t('contact.message')}</label>
+                  <label className="block text-gray-800 text-xs sm:text-sm font-semibold mb-1.5 text-left">
+                    {t('contact.message')} <span className="text-red-500">*</span>
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-sky-500 focus:border-sky-500 outline-none transition resize-none"
+                    rows={4}
+                    className="w-full px-4 py-3 bg-gray-50/80 border border-gray-300 rounded-xl focus:bg-white focus:border-blue-600 focus:ring-4 focus:ring-blue-100 outline-none transition text-sm text-gray-900 placeholder-gray-400 shadow-sm resize-none"
                     placeholder={t('contact.placeholderMessage')}
                   />
                 </div>
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold rounded-xl hover:from-sky-600 hover:to-blue-700 transition-all disabled:opacity-50 flex items-center justify-center space-x-2"
-                >
-                  {loading ? (
-                    <>
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      <span>{t('contact.sending')}</span>
-                    </>
-                  ) : (
-                    <>
-                      <span>{t('contact.sendMessage')}</span>
-                      <Send className="w-4 h-4" />
-                    </>
-                  )}
-                </button>
+
+                {/* Botón de Enviar Formulario */}
+                <div className="pt-2">
+                  <button
+                    type="submit"
+                    disabled={loading}
+                    className="w-full py-4 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-bold rounded-xl transition-all disabled:opacity-50 flex items-center justify-center text-sm shadow-md hover:shadow-lg tracking-wide uppercase cursor-pointer"
+                  >
+                    {loading ? t('contact.sending') : t('contact.sendMessage')}
+                  </button>
+                </div>
               </form>
             )}
           </div>
         </div>
       </div>
-
-      {/* WhatsApp flotante */}
-      <a
-        href={whatsappUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all z-50 animate-bounce"
-      >
-        <MessageCircle className="w-6 h-6" />
-      </a>
     </section>
   );
 };

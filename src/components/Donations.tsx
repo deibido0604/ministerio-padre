@@ -1,5 +1,4 @@
 import React from 'react';
-import { Heart, Shield, Gift, CreditCard } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Donations: React.FC = () => {
@@ -7,90 +6,85 @@ const Donations: React.FC = () => {
   const paypalUrl = "https://www.paypal.com/donate";
 
   return (
-    <section id="donations" className="py-20 bg-white">
+    <section id="donations" className="py-20 bg-white text-center">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-3 bg-rose-100 rounded-2xl mb-4">
-            <Heart className="w-8 h-8 text-rose-500" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">{t('donations.title')}</h2>
-          <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">{t('donations.subtitle')}</p>
+        {/* Encabezado centrado */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">
+            {t('footer.companyName')}
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
+            {t('donations.title')}
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {t('donations.subtitle')}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Columna izquierda - Información */}
-          <div className="space-y-6">
-            <div className="bg-gradient-to-r from-rose-50 to-orange-50 rounded-2xl p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-4 flex items-center">
-                <Gift className="w-5 h-5 text-rose-500 mr-2" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-stretch max-w-5xl mx-auto">
+          {/* Columna izquierda - Razones y Otras formas completamente centradas */}
+          <div className="space-y-6 flex flex-col justify-between">
+            <div className="bg-gray-50 rounded-2xl p-6 sm:p-7 border border-gray-100 flex flex-col items-center text-center shadow-sm">
+              <h3 className="text-lg font-bold text-gray-900 mb-5">
                 {t('donations.whyDonate')}
               </h3>
-              <ul className="space-y-3">
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-rose-500 rounded-full mt-2"></div>
-                  <p className="text-gray-700"><span className="font-semibold">{t('donations.missionHeading')}:</span> {t('donations.missionDesc')}</p>
+              <ul className="space-y-4 w-full">
+                <li className="border-t-2 border-blue-600 pt-3 flex flex-col items-center text-center">
+                  <p className="font-semibold text-gray-900 text-sm">{t('donations.missionHeading')}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-0.5 max-w-sm">{t('donations.missionDesc')}</p>
                 </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-rose-500 rounded-full mt-2"></div>
-                  <p className="text-gray-700"><span className="font-semibold">{t('donations.socialHeading')}:</span> {t('donations.socialDesc')}</p>
+                <li className="border-t-2 border-emerald-600 pt-3 flex flex-col items-center text-center">
+                  <p className="font-semibold text-gray-900 text-sm">{t('donations.socialHeading')}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-0.5 max-w-sm">{t('donations.socialDesc')}</p>
                 </li>
-                <li className="flex items-start space-x-3">
-                  <div className="w-2 h-2 bg-rose-500 rounded-full mt-2"></div>
-                  <p className="text-gray-700"><span className="font-semibold">{t('donations.infraHeading')}:</span> {t('donations.infraDesc')}</p>
+                <li className="border-t-2 border-amber-600 pt-3 flex flex-col items-center text-center">
+                  <p className="font-semibold text-gray-900 text-sm">{t('donations.infraHeading')}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mt-0.5 max-w-sm">{t('donations.infraDesc')}</p>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-gray-50 rounded-2xl p-6">
-              <h3 className="text-xl font-bold text-gray-800 mb-4">{t('donations.otherWays')}</h3>
-              <div className="space-y-4">
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl shadow-sm">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center">
-                      <span className="text-blue-600 font-bold">🏦</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold">{t('donations.bank.title')}</p>
-                      <p className="text-sm text-gray-500">Banco Ficohsa - Cuenta: 200018296887</p>
-                    </div>
-                  </div>
+            <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex flex-col items-center text-center shadow-sm">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">
+                {t('donations.otherWays')}
+              </h3>
+              <div className="space-y-3 w-full">
+                <div className="p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
+                  <p className="font-semibold text-gray-900 text-sm">{t('donations.bank.title')}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">Banco Ficohsa · Cuenta: 200018296887</p>
                 </div>
-                <div className="flex items-center justify-between p-4 bg-white rounded-xl shadow-sm">
-                  <div className="flex items-center space-x-3">
-                    <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center">
-                      <span className="text-green-600 font-bold">⛪</span>
-                    </div>
-                    <div>
-                      <p className="font-semibold">{t('donations.inPerson')}</p>
-                      <p className="text-sm text-gray-500">{t('donations.inPersonDesc')}</p>
-                    </div>
-                  </div>
+                <div className="p-4 bg-white rounded-xl border border-gray-100 shadow-sm flex flex-col items-center text-center">
+                  <p className="font-semibold text-gray-900 text-sm">{t('donations.inPerson')}</p>
+                  <p className="text-xs text-gray-500 mt-0.5">{t('donations.inPersonDesc')}</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Columna derecha - Botón de donación */}
-          <div className="bg-gradient-to-br from-sky-50 to-blue-50 rounded-2xl p-8 shadow-lg">
-            <div className="text-center mb-6">
-              <CreditCard className="w-12 h-12 text-sky-500 mx-auto mb-3" />
-              <h3 className="text-2xl font-bold text-gray-800">{t('donations.onlineDonation')}</h3>
-              <p className="text-gray-600 mt-2">{t('donations.onlineSubtitle')}</p>
-            </div>
+          {/* Columna derecha - Donación en Línea completamente centrada */}
+          <div className="bg-gradient-to-br from-blue-50/50 via-white to-sky-50/50 rounded-2xl p-8 sm:p-10 border border-blue-100 shadow-md flex flex-col items-center justify-center text-center">
+            <span className="text-xs font-semibold text-blue-600 uppercase tracking-wider block mb-2">
+              {t('donations.onlineDonation')}
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3">
+              {t('donations.onlineSubtitle')}
+            </h3>
+            <p className="text-gray-600 text-sm sm:text-base mb-8 max-w-md mx-auto leading-relaxed">
+              {t('donations.description')}
+            </p>
 
             <a
               href={paypalUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center w-full px-6 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold rounded-xl hover:from-sky-600 hover:to-blue-700 transition-all shadow-lg"
+              className="inline-flex items-center justify-center w-full max-w-xs px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-xl transition-all shadow-md hover:shadow-lg text-sm sm:text-base mx-auto"
             >
-              <span>{t('donations.donatePaypal')}</span>
+              {t('donations.donatePaypal')}
             </a>
 
-            <div className="mt-6 flex items-center justify-center space-x-2 text-sm text-gray-500">
-              <Shield className="w-4 h-4 text-green-500" />
-              <span>{t('donations.secure')}</span>
-            </div>
+            <p className="mt-4 text-xs text-gray-500">
+              {t('donations.secure')}
+            </p>
           </div>
         </div>
       </div>

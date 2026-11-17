@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { History as HistoryIcon, Target, Eye, Shield, Camera } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 import ImageModal from './ImageModal';
 
@@ -23,100 +22,108 @@ const History: React.FC = () => {
   const closeModal = () => setModalOpen(false);
 
   return (
-    <section id="history" className="py-20 bg-white">
+    <section id="history" className="py-20 bg-white text-center">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center justify-center p-3 bg-sky-100 rounded-2xl mb-4">
-            <HistoryIcon className="w-8 h-8 text-sky-600" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4">{t('history.title')}</h2>
-          <p className="text-xl text-gray-600 text-center max-w-3xl mx-auto">{t('history.subtitle')}</p>
+        {/* Encabezado de sección centrado */}
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <span className="text-xs font-semibold text-blue-600 uppercase tracking-widest block mb-2">
+            {t('footer.companyName')}
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-900 mb-3 tracking-tight">
+            {t('history.title')}
+          </h2>
+          <p className="text-lg text-gray-600 leading-relaxed">
+            {t('history.subtitle')}
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-          {/* Columna izquierda - Historia y Galería de Comunidad */}
-          <div className="bg-gray-50 rounded-2xl p-8 shadow-sm space-y-6">
-            <div className="space-y-4 text-gray-700 leading-relaxed">
-              <p className="text-lg">
-                <span className="font-bold text-sky-600">{t('footer.companyName')}</span> {t('history.paragraph1')}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-stretch max-w-6xl mx-auto">
+          {/* Columna izquierda - Historia y Galería completamente centradas */}
+          <div className="bg-gray-50 rounded-2xl p-6 sm:p-8 border border-gray-100 flex flex-col items-center justify-between text-center space-y-6">
+            <div className="space-y-4 text-gray-700 leading-relaxed max-w-lg mx-auto">
+              <p className="text-lg font-medium text-gray-900">
+                <span className="text-blue-600 font-bold">{t('footer.companyName')}</span> {t('history.paragraph1')}
               </p>
-              <p>{t('history.paragraph2')}</p>
-              <p>{t('history.paragraph3')}</p>
+              <p className="text-sm sm:text-base">{t('history.paragraph2')}</p>
+              <p className="text-sm sm:text-base">{t('history.paragraph3')}</p>
             </div>
 
-            {/* Mosaico de fotos reales de la iglesia */}
-            <div className="pt-4 border-t border-gray-200">
-              <div className="flex items-center justify-between mb-3">
-                <div className="flex items-center space-x-2">
-                  <Camera className="w-5 h-5 text-sky-600" />
-                  <h3 className="font-bold text-gray-800 text-sm">{t('history.galleryTitle')}</h3>
-                </div>
-                <span className="text-xs text-sky-600 font-medium">{t('hero.expandImage')}</span>
+            {/* Mosaico de fotos centrado */}
+            <div className="pt-6 border-t border-gray-200 w-full flex flex-col items-center">
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-2 mb-4 text-center">
+                <h3 className="font-bold text-gray-900 text-sm">
+                  {t('history.galleryTitle')}
+                </h3>
+                <span className="text-xs text-blue-600 font-medium">
+                  ({t('hero.expandImage')})
+                </span>
               </div>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full max-w-lg justify-center">
                 {HISTORY_PREVIEW_PHOTOS.map((src, idx) => (
                   <div
                     key={idx}
                     onClick={() => openModal(idx)}
-                    className="relative group cursor-pointer overflow-hidden rounded-xl bg-gray-900 aspect-[3/4] shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                    className="relative group cursor-pointer overflow-hidden rounded-xl bg-gray-950 aspect-[3/4] shadow-sm hover:shadow-md transition-all duration-300 transform hover:-translate-y-0.5"
                   >
                     {/* Fondo desenfocado */}
                     <img
                       src={src}
                       alt=""
                       aria-hidden="true"
-                      className="absolute inset-0 w-full h-full object-cover filter blur-sm opacity-40 scale-110"
+                      className="absolute inset-0 w-full h-full object-cover filter blur-sm opacity-35 scale-110 pointer-events-none"
                     />
-                    {/* Imagen contenida */}
+                    {/* Imagen contenida completa */}
                     <img
                       src={src}
                       alt={`Foto de la comunidad ${idx + 1}`}
                       className="relative z-10 w-full h-full object-contain p-1 group-hover:scale-105 transition-transform duration-300"
                     />
-                    <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity z-20" />
                   </div>
                 ))}
               </div>
             </div>
           </div>
 
-          {/* Columna derecha - Misión, Visión, Valores */}
-          <div className="space-y-6">
-            <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-6">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="p-2 bg-sky-500 rounded-xl">
-                  <Target className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-800">{t('history.mission')}</h3>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
+          {/* Columna derecha - Misión, Visión, Valores completamente centrados */}
+          <div className="flex flex-col justify-between space-y-5 text-center">
+            <div className="bg-gray-50 border-t-4 border-blue-600 rounded-2xl p-6 sm:p-7 border-x border-b border-gray-100 flex flex-col items-center text-center shadow-sm">
+              <span className="text-xs font-bold text-blue-600 uppercase tracking-widest mb-1">
+                01
+              </span>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                {t('history.mission')}
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base max-w-md mx-auto">
                 {t('history.missionText')}
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-6">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="p-2 bg-sky-500 rounded-xl">
-                  <Eye className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-800">{t('history.vision')}</h3>
-              </div>
-              <p className="text-gray-700 leading-relaxed">
+            <div className="bg-gray-50 border-t-4 border-emerald-600 rounded-2xl p-6 sm:p-7 border-x border-b border-gray-100 flex flex-col items-center text-center shadow-sm">
+              <span className="text-xs font-bold text-emerald-600 uppercase tracking-widest mb-1">
+                02
+              </span>
+              <h3 className="text-lg font-bold text-gray-900 mb-2">
+                {t('history.vision')}
+              </h3>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base max-w-md mx-auto">
                 {t('history.visionText')}
               </p>
             </div>
 
-            <div className="bg-gradient-to-r from-sky-50 to-blue-50 rounded-2xl p-6">
-              <div className="flex items-center space-x-3 mb-3">
-                <div className="p-2 bg-sky-500 rounded-xl">
-                  <Shield className="w-5 h-5 text-white" />
-                </div>
-                <h3 className="text-xl font-bold text-gray-800">{t('history.values')}</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
+            <div className="bg-gray-50 border-t-4 border-amber-600 rounded-2xl p-6 sm:p-7 border-x border-b border-gray-100 flex flex-col items-center text-center shadow-sm">
+              <span className="text-xs font-bold text-amber-600 uppercase tracking-widest mb-1">
+                03
+              </span>
+              <h3 className="text-lg font-bold text-gray-900 mb-3">
+                {t('history.values')}
+              </h3>
+              <div className="flex flex-wrap justify-center gap-2 max-w-md mx-auto">
                 {t('history.valuesList').split(', ').map((value: string) => (
-                  <span key={value} className="px-3 py-1 bg-white rounded-full text-sm text-sky-600 font-medium shadow-sm">
+                  <span
+                    key={value}
+                    className="px-3.5 py-1.5 bg-white border border-gray-200 rounded-lg text-sm text-gray-800 font-medium shadow-sm"
+                  >
                     {value}
                   </span>
                 ))}

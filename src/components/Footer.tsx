@@ -1,91 +1,98 @@
 import React from 'react';
-import { Heart, MapPin, Phone, Mail, MessageCircle } from 'lucide-react';
 import { useLanguage } from '../context/LanguageContext';
 
 const Footer: React.FC = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = {
-    facebook: "https://facebook.com/tu-pagina",
-    instagram: "https://instagram.com/tu-cuenta",
-    youtube: "https://youtube.com/tu-canal",
-    whatsapp: "https://wa.me/50496337658",
-  };
+  const socialLinks = [
+    { name: 'Facebook', href: 'https://facebook.com', label: 'FB' },
+    { name: 'Instagram', href: 'https://instagram.com', label: 'IG' },
+    { name: 'YouTube', href: 'https://youtube.com', label: 'YT' },
+    { name: 'WhatsApp', href: 'https://wa.me/50496337658', label: 'WA' },
+  ];
 
   return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          <div>
-            <h3 className="text-xl font-bold mb-4">{t('footer.companyName')}</h3>
-            <p className="text-gray-400 mb-4">{t('footer.tagline')}</p>
-            <p className="text-gray-400 text-sm">{t('footer.description')}</p>
+    <footer className="bg-gray-900 text-white text-center">
+      <div className="container mx-auto px-4 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12 max-w-6xl mx-auto">
+          {/* Columna 1: Información centrada */}
+          <div className="flex flex-col items-center text-center">
+            <h3 className="text-xl font-bold mb-3">{t('footer.companyName')}</h3>
+            <p className="text-gray-400 text-sm mb-3 leading-relaxed max-w-xs">{t('footer.tagline')}</p>
+            <p className="text-gray-400 text-xs leading-relaxed max-w-xs">{t('footer.description')}</p>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">{t('footer.quickLinks')}</h4>
-            <ul className="space-y-2">
+          {/* Columna 2: Enlaces Rápidos centrados */}
+          <div className="flex flex-col items-center text-center">
+            <h4 className="text-sm font-semibold tracking-wider uppercase text-gray-300 mb-4">
+              {t('footer.quickLinks')}
+            </h4>
+            <ul className="space-y-2.5 text-sm flex flex-col items-center">
               <li><a href="#home" className="text-gray-400 hover:text-white transition-colors">{t('header.home')}</a></li>
               <li><a href="#history" className="text-gray-400 hover:text-white transition-colors">{t('header.history')}</a></li>
-              <li><a href="#trips" className="text-gray-400 hover:text-white transition-colors">{t('header.trips')}</a></li>
-              <li><a href="#projects" className="text-gray-400 hover:text-white transition-colors">{t('header.projects')}</a></li>
               <li><a href="#ministries" className="text-gray-400 hover:text-white transition-colors">{t('header.ministries')}</a></li>
               <li><a href="#donations" className="text-gray-400 hover:text-white transition-colors">{t('header.donations')}</a></li>
               <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">{t('header.contact')}</a></li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">{t('footer.contactInfo')}</h4>
-            <ul className="space-y-3">
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-gray-400 mt-0.5 flex-shrink-0" />
+          {/* Columna 3: Contacto centrado */}
+          <div className="flex flex-col items-center text-center">
+            <h4 className="text-sm font-semibold tracking-wider uppercase text-gray-300 mb-4">
+              {t('footer.contactInfo')}
+            </h4>
+            <ul className="space-y-3 text-sm text-gray-400 flex flex-col items-center">
+              <li>
                 <a
                   href="https://maps.google.com/?q=78-80+W+Elm+St,+Brockton,+MA+02301"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-gray-400 hover:text-white transition-colors"
+                  className="hover:text-white transition-colors leading-relaxed block text-center max-w-xs"
                 >
                   {t('footer.address')}
                 </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Phone className="h-5 w-5 text-gray-400" />
-                <a href="tel:+50496337658" className="text-gray-400 hover:text-white transition-colors">{t('footer.phone')}</a>
+              <li>
+                <a href="tel:+50496337658" className="hover:text-white transition-colors">
+                  {t('footer.phone')}
+                </a>
               </li>
-              <li className="flex items-center space-x-3">
-                <Mail className="h-5 w-5 text-gray-400" />
-                <a href="mailto:info@ministeriovidaeterna.org" className="text-gray-400 hover:text-white transition-colors">{t('footer.email')}</a>
+              <li>
+                <a href="mailto:info@ministeriovidaeterna.org" className="hover:text-white transition-colors break-all">
+                  {t('footer.email')}
+                </a>
               </li>
             </ul>
           </div>
 
-          <div>
-            <h4 className="text-lg font-semibold mb-4">{t('footer.socialMedia')}</h4>
-            <div className="flex space-x-4">
-              <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-2 rounded-full hover:bg-[#1877f2] transition-colors">
-                <span className="text-white font-bold">f</span>
-              </a>
-              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-2 rounded-full hover:bg-[#e4405f] transition-colors">
-                <span className="text-white font-bold">📷</span>
-              </a>
-              <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-2 rounded-full hover:bg-[#ff0000] transition-colors">
-                <span className="text-white font-bold">▶</span>
-              </a>
-              <a href={socialLinks.whatsapp} target="_blank" rel="noopener noreferrer" className="bg-gray-800 p-2 rounded-full hover:bg-[#25D366] transition-colors">
-                <MessageCircle className="h-5 w-5" />
-              </a>
+          {/* Columna 4: Redes sociales centradas */}
+          <div className="flex flex-col items-center text-center">
+            <h4 className="text-sm font-semibold tracking-wider uppercase text-gray-300 mb-4">
+              {t('footer.socialMedia')}
+            </h4>
+            <div className="flex flex-wrap justify-center gap-2 max-w-xs">
+              {socialLinks.map((item) => (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-1.5 bg-gray-800 hover:bg-blue-600 text-xs font-semibold rounded-lg transition-colors text-gray-300 hover:text-white"
+                >
+                  {item.name}
+                </a>
+              ))}
             </div>
           </div>
         </div>
 
-        <div className="border-t border-gray-800 pt-8 text-center text-gray-400 text-sm">
+        <div className="border-t border-gray-800 pt-8 text-center text-gray-500 text-xs space-y-1">
           <p>
             © {currentYear} {t('footer.companyName')}. {t('footer.copyright')}
           </p>
-          <p className="mt-2 flex items-center justify-center">
-            {t('footer.madeWith')} <Heart className="h-4 w-4 text-red-500 mx-1" /> {t('footer.for')}
+          <p>
+            {t('footer.madeWith')} · {t('footer.for')}
           </p>
         </div>
       </div>

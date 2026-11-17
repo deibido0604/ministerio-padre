@@ -11,27 +11,27 @@
         "media": "Media",
         "projects": "Projects",
         "ministries": "Ministries",
-        "donations": "Donations",
+        "donations": "Giving",
         "contact": "Contact",
         "language": "Language",
         "callUs": "Call Us",
         "mainPhone": "Main Phone"
     },
     "hero": {
-        "title": "Church Ministry Eternal Life",
-        "welcome": "Welcome to the",
-        "description": "We are a faith community committed to spiritual growth, community service, and the proclamation of the Gospel. Our church is a place where lives are transformed by God's love.",
-        "visitUs": "Visit Us This Sunday",
-        "support": "Support the Work",
+        "title": "Eternal Life Ministry Church",
+        "welcome": "Welcome to",
+        "description": "We are a Christian community of faith dedicated to spiritual growth, serving our neighbors, and sharing the message of Jesus Christ. A place where lives are transformed by the love of God.",
+        "visitUs": "Join Us This Sunday",
+        "support": "Support Our Ministry",
         "community": "Community",
-        "communityDesc": "We live in unity and brotherly love",
+        "communityDesc": "Walking together in fellowship and brotherly love",
         "growth": "Growth",
-        "growthDesc": "Discipleship and biblical training",
-        "teaching": "Teaching",
-        "teachingDesc": "Solid and relevant Word of God",
-        "expandImage": "Click to expand",
+        "growthDesc": "Discipleship, prayer, and spiritual development",
+        "teaching": "Biblical Teaching",
+        "teachingDesc": "Grounded in the solid truth of God's Word",
+        "expandImage": "View full size",
         "allPhotos": "All Photos",
-        "generalService": "General Service",
+        "generalService": "Worship Services",
         "bibleStudy": "Bible Study",
         "viewMode": "View mode",
         "fit": "Fit Photo",
@@ -39,129 +39,131 @@
     },
     "history": {
         "title": "Our History",
-        "subtitle": "Ministry Eternal Life in Honduras",
-        "paragraph1": "God gave the vision to missionaries Víctor Solórzano and Doris Hernández to found Ministry Eternal Life in Honduras.",
-        "paragraph2": "After a visit as volunteers with their son Javier, they saw the healthcare needs and extreme poverty in the region, and God's goodness motivated them to start with children bringing medical brigades along with the transforming message of Jesus Christ.",
-        "paragraph3": "With that purpose, missionaries Fernando and Glenni arrived, answering the call to give life to the mission and preparing a youth team of missionaries who will carry the salvation message to the next generation.",
+        "subtitle": "Eternal Life Ministry in Honduras & Beyond",
+        "paragraph1": "God placed the vision in the hearts of missionaries Víctor Solórzano and Doris Hernández to establish Eternal Life Ministry in Honduras.",
+        "paragraph2": "During volunteer work alongside their son Javier, they witnessed firsthand the healthcare hardships and severe poverty facing local families. Moved by God's love, they began serving children through medical clinics and the transformative gospel of Jesus Christ.",
+        "paragraph3": "Answering God's call, missionaries Fernando and Glenni joined the mission, pouring life into the work and mentoring a dedicated youth team to carry the message of hope to the next generation.",
         "galleryTitle": "Church Gallery",
-        "gallerySubtitle": "Moments of worship, fellowship, and Biblical study",
+        "gallerySubtitle": "Moments of worship, fellowship, and Bible study",
         "viewAll": "View all photos",
         "purpose": "Purpose",
-        "purposeText": "Our fundamental purpose is to equip churches, youth, teachers, and families to be effective in fulfilling the Great Commission.",
+        "purposeText": "To equip and inspire churches, youth, teachers, and families to effectively fulfill the Great Commission.",
         "mission": "Mission",
-        "missionText": "Preach the good news (the gospel of Jesus Christ). Reach the lost and present them the salvation plan that is given in the name of Jesus Christ. Build up the church, strengthening them in love for God and biblical knowledge.",
+        "missionText": "To proclaim the good news of Jesus Christ, reach the lost with the message of salvation, and build up believers through biblical truth and God's love.",
         "vision": "Vision",
-        "visionText": "Having incorporated the practice of developing ourselves through a good biblical base, we seek the development of members who exercise in their secular and spiritual life honesty, integrity, and holiness.",
+        "visionText": "Rooted in sound biblical doctrine, we nurture disciples who live out honesty, integrity, and holiness in every aspect of life.",
         "values": "Values",
-        "valuesList": "Honesty, Integrity and Holiness"
+        "valuesList": "Honesty, Integrity, and Holiness"
     },
     "trips": {
         "title": "Ministry Activities",
-        "subtitle": "These are the works we currently do as a church in the community.",
+        "subtitle": "The ongoing works and initiatives we carry out as a church family.",
         "cards": {
             "templo": {
                 "title": "Temple Construction",
-                "frequency": "Active project",
-                "description": "Structure advancement, roofing and improvements for the congregation space.",
-                "detail": "Continuous work with support from brothers and volunteers."
+                "frequency": "Active Project",
+                "description": "Structural progress, roofing, and improvements to expand our sanctuary for the congregation.",
+                "detail": "Continuous work with support from our brothers, sisters, and volunteers."
             },
             "culto": {
-                "title": "Church Services",
+                "title": "Worship Services",
                 "frequency": "Weekly",
-                "description": "Worship, teaching and prayer meetings as a faith community.",
-                "detail": "Participation of children, youth and adults in each service."
+                "description": "Gatherings of worship, preaching, and prayer as a united family of faith.",
+                "detail": "Active participation of children, youth, and adults in every service."
             },
             "casas": {
-                "title": "Houses of Life",
-                "frequency": "Wednesday",
-                "description": "We visit member homes to develop biblical topics and open space for neighbors.",
-                "detail": "Evangelism in homes and family spiritual strengthening."
+                "title": "Life Groups",
+                "frequency": "Wednesdays",
+                "description": "Gathering in homes to study scripture, pray together, and open doors for neighbors.",
+                "detail": "Evangelism in neighborhoods and strengthening spiritual life for families."
             }
         }
     },
     "projects": {
         "title": "Projects",
-        "subtitle": "Projects that transform lives in our community",
+        "subtitle": "Initiatives transforming lives in our community",
         "cards": {
             "medical": {
                 "title": "Medical Brigades",
-                "description": "Free medical care for needy communities"
+                "description": "Free healthcare and essential medicines for underserved communities"
             },
             "education": {
                 "title": "Biblical Education",
-                "description": "Classes and workshops for spiritual growth"
+                "description": "Classes, workshops, and mentorship for spiritual growth"
             },
             "community": {
-                "title": "Community Work",
-                "description": "Social service and mutual aid projects"
+                "title": "Community Outreach",
+                "description": "Compassionate social care, relief, and mutual support programs"
             }
         }
     },
     "ministries": {
         "title": "Ministries",
-        "subtitle": "Areas of service within our church",
+        "subtitle": "Areas of service and growth within our church",
         "learnMore": "Learn more",
         "music": {
             "title": "Music Ministry",
-            "description": "Praise and worship"
+            "description": "Leading the congregation in praise and heartfelt worship"
         },
         "education": {
-            "title": "Biblical Education",
-            "description": "Classes and workshops for spiritual growth"
+            "title": "Biblical Teaching",
+            "description": "In-depth Bible study and discipleship for spiritual growth"
         },
         "community": {
-            "title": "Community Service",
-            "description": "Help to those in need"
+            "title": "Community Outreach",
+            "description": "Extending help, care, and practical support to those in need"
         },
         "youth": {
             "title": "Youth Ministry",
-            "description": "Discipleship and activities for youth"
+            "description": "Empowering young people to follow Christ and walk in purpose"
         },
         "missions": {
-            "title": "Missions",
-            "description": "Evangelism projects"
+            "title": "Missions & Evangelism",
+            "description": "Proclaiming the gospel through local and regional outreach"
         },
         "children": {
             "title": "Children's Ministry",
-            "description": "Biblical education for the little ones"
+            "description": "Nurturing faith and Christian foundations in our little ones"
         }
     },
     "donations": {
-        "title": "Donations",
+        "title": "Giving & Donations",
         "subtitle": "Your support makes God's work possible",
-        "description": "All donations are used to advance God's kingdom and help those in need.",
-        "whyDonate": "Why Donate?",
-        "missionHeading": "Mission and Evangelism",
-        "missionDesc": "Supports the expansion of the gospel in our region.",
-        "socialHeading": "Social Outreach",
-        "socialDesc": "Food and support programs for vulnerable families.",
-        "infraHeading": "Infrastructure",
-        "infraDesc": "Improvement of our facilities to better serve our community.",
-        "otherWays": "Other ways to donate",
-        "inPerson": "In person",
-        "inPersonDesc": "Sundays during our services",
-        "onlineDonation": "Online Donation",
-        "onlineSubtitle": "Secure, fast and simple",
+        "description": "Every contribution helps advance the kingdom of God, support ministry operations, and serve families in need.",
+        "whyDonate": "Why Give?",
+        "missionHeading": "Missions and Evangelism",
+        "missionDesc": "Supports spreading the gospel of Jesus Christ throughout our community.",
+        "socialHeading": "Community Care",
+        "socialDesc": "Provides essential food and assistance programs for vulnerable families.",
+        "infraHeading": "Facilities & Sanctuary",
+        "infraDesc": "Maintains and improves our facilities to welcome and serve our congregation.",
+        "otherWays": "Other Ways to Give",
+        "inPerson": "In Person",
+        "inPersonDesc": "During our Sunday and Wednesday worship services",
+        "onlineDonation": "Give Online",
+        "onlineSubtitle": "Safe, fast, and simple",
         "donatePaypal": "Donate with PayPal",
         "secure": "100% safe and secure",
         "bank": {
             "title": "Bank Transfer",
-            "account": "Account pending",
-            "note": "Contact us for more information"
+            "account": "Account details on request",
+            "note": "Please contact us for wire instructions"
         },
         "inKind": {
             "title": "In-Kind Donations",
-            "description": "We accept donations of food, clothing and building materials"
+            "description": "We welcome donations of non-perishable food, clothing, and building materials"
         },
         "volunteer": {
-            "title": "Volunteers",
-            "description": "Your time and skills are also valuable"
+            "title": "Volunteer",
+            "description": "Your time, talents, and prayers are deeply valuable"
         }
     },
     "contact": {
         "title": "Contact",
-        "subtitle": "We are here to serve you",
-        "formTitle": "Send us a Message",
+        "subtitle": "We are here to serve and welcome you",
+        "formBadge": "Contact Form",
+        "formTitle": "Send Us a Message",
+        "formSubtitle": "Fill out the fields below and we will get back to you shortly.",
         "name": "Name",
         "fullName": "Full Name",
         "placeholderName": "Your name",
@@ -170,32 +172,32 @@
         "phone": "Phone",
         "placeholderPhone": "+1 (508) ...",
         "message": "Message",
-        "placeholderMessage": "How can we help you?",
+        "placeholderMessage": "How can we help or pray for you?",
         "send": "Send",
         "sendMessage": "Send Message",
         "sending": "Sending...",
         "success": "Message sent successfully",
         "sentSuccess": "Message Sent!",
-        "sentSuccessDesc": "Thank you for contacting us. We will get back to you soon.",
+        "sentSuccessDesc": "Thank you for reaching out. We will get back to you shortly.",
         "error": "Error sending message",
         "address": "Address",
         "addressValue": "78-80 W Elm St, Brockton, MA 02301",
-        "schedule": "Service Hours",
+        "schedule": "Worship Times",
         "scheduleSundays": "Sundays: 9:00 AM & 6:00 PM",
         "scheduleWednesdays": "Wednesdays: 7:00 PM (Bible Study)"
     },
     "footer": {
-        "companyName": "Ministry Eternal Life",
+        "companyName": "Eternal Life Ministry",
         "tagline": "Transforming lives for Christ",
-        "description": "A faith community committed to spiritual growth and community service.",
+        "description": "A community of faith committed to spiritual growth and loving community service.",
         "quickLinks": "Quick Links",
         "contactInfo": "Contact Information",
         "address": "78-80 W Elm St, Brockton, MA 02301",
         "phone": "+504 9633-7658",
         "email": "info@ministeriovidaeterna.org",
-        "socialMedia": "Social Media",
+        "socialMedia": "Connect With Us",
         "copyright": "All rights reserved.",
-        "madeWith": "Made with",
-        "for": "for God's glory"
+        "madeWith": "Dedicated with love",
+        "for": "for the glory of God"
     }
 }

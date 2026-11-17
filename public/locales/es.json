@@ -20,16 +20,16 @@
     "hero": {
         "title": "Iglesia Ministerio Vida Eterna",
         "welcome": "Bienvenidos a la",
-        "description": "Somos una comunidad de fe comprometida con el crecimiento espiritual, el servicio a la comunidad y la proclamación del Evangelical. Nuestra iglesia es un lugar donde las vidas son transformadas por el amor de Dios.",
+        "description": "Somos una comunidad de fe comprometida con el crecimiento espiritual, el servicio a la comunidad y la proclamación del Evangelio. Nuestra iglesia es un lugar donde las vidas son transformadas por el amor de Dios.",
         "visitUs": "Visítanos este Domingo",
         "support": "Apoya la Obra",
         "community": "Comunidad",
         "communityDesc": "Vivimos en unidad y amor fraternal",
         "growth": "Crecimiento",
         "growthDesc": "Discipulado y formación bíblica",
-        "teaching": "Enseñanza",
+        "teaching": "Enseñanza Bíblica",
         "teachingDesc": "Palabra de Dios sólida y relevante",
-        "expandImage": "Clic para ampliar",
+        "expandImage": "Ver en tamaño completo",
         "allPhotos": "Todas las fotos",
         "generalService": "Culto General",
         "bibleStudy": "Estudio Bíblico",
@@ -39,7 +39,7 @@
     },
     "history": {
         "title": "Nuestra Historia",
-        "subtitle": "Ministerio Vida Eterna en Honduras",
+        "subtitle": "Ministerio Vida Eterna en Honduras y Más Allá",
         "paragraph1": "Dios dio la visión a los misioneros Víctor Solórzano y Doris Hernández al fundar el Ministerio Vida Eterna en Honduras.",
         "paragraph2": "Tras una visita como voluntarios con su hijo Javier, vieron las necesidades hospitalarias y de pobreza extrema que se atravesaban en la región, y la bondad de Dios motivó a comenzar con niños trayendo brigadas médicas junto al mensaje transformador de Jesucristo.",
         "paragraph3": "Con ese propósito llegaron los misioneros Fernando y Glenni, atendiendo el llamado para darle vida a la misión y preparando un equipo juvenil de misioneros que llevará el mensaje de salvación a la siguiente generación.",
@@ -147,7 +147,7 @@
         "bank": {
             "title": "Transferencia Bancaria",
             "account": "Cuenta pendiente",
-            "note": "Contactanos para más información"
+            "note": "Contáctanos para más información"
         },
         "inKind": {
             "title": "Donaciones en Especie",
@@ -161,7 +161,9 @@
     "contact": {
         "title": "Contacto",
         "subtitle": "Estamos para servirte",
+        "formBadge": "Formulario de Contacto",
         "formTitle": "Envíanos un Mensaje",
+        "formSubtitle": "Completa los campos a continuación y te responderemos a la brevedad.",
         "name": "Nombre",
         "fullName": "Nombre completo",
         "placeholderName": "Tu nombre",
@@ -180,7 +182,7 @@
         "error": "Error al enviar el mensaje",
         "address": "Dirección",
         "addressValue": "78-80 W Elm St, Brockton, MA 02301",
-        "schedule": "Horarios de atención",
+        "schedule": "Horarios de Culto",
         "scheduleSundays": "Domingos: 9:00 AM y 6:00 PM",
         "scheduleWednesdays": "Miércoles: 7:00 PM (Estudio Bíblico)"
     },
@@ -195,7 +197,7 @@
         "email": "info@ministeriovidaeterna.org",
         "socialMedia": "Redes Sociales",
         "copyright": "Todos los derechos reservados.",
-        "madeWith": "Hecho con",
+        "madeWith": "Hecho con amor",
         "for": "para la gloria de Dios"
     }
 }
